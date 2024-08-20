@@ -8,3 +8,14 @@
 
   <%= button_to "Destroy this post", @post, method: :delete %>
 </div>
+
+<div class="container border p-3">
+  <%= render 'comments/form', post: @post %>
+</div>
+<% if @comments.size.positive? %>
+  <div>
+    <% @comments.each do |comment| %>  
+      <%= render 'comments/comment', post: @post, comment: comment %>
+    <% end %>
+  </div>
+<% end %>
