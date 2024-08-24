@@ -143,6 +143,8 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.16.7-arm64-darwin)
       racc (~> 1.4)
+    noticed (2.4.1)
+      rails (>= 6.1.0)
     orm_adapter (0.5.0)
     psych (5.1.2)
       stringio
@@ -248,6 +250,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  noticed (~> 2.4)
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
   redis (~> 4.0)

@@ -10,7 +10,7 @@
 </div>
 
 <div class="container border p-3">
-  <%= render 'comments/form', post: @post %>
+  <%= render 'comments/form', post: @post, comment: @post.comments.build, submit_label: 'Reply' %>
 </div>
 <% if @comments.size.positive? %>
   <div>
