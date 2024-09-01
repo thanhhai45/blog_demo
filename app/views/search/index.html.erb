@@ -15,7 +15,7 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= link_to post.title, post, class: 'text-white' %></td>
-          <td><%= truncate(post.body, length: 25, omission: '...') %></td>
+          <td><%= truncate(post.body.to_plain_text, length: 25, omission: '...') %></td>
           <td><%= link_to post.user.name, post.user, class: 'text-white' %></td>
         </tr>
       <% end %>
