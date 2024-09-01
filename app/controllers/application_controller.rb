@@ -9,9 +9,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_notifications
-    @notifications = current_user.notifications.newest_first.limit(9)
+    @notifications = current_user.notifications.includes(:event).newest_first.limit(9)
     @unread = @notifications.unread
     @read = @notifications.read
-
   end
 end

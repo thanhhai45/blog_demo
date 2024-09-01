@@ -1,16 +1,18 @@
 class PostsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[index show]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @pagy, @posts = pagy(Post.all.includes(:user, :rich_text_body).order(created_at: :desc))
   end
 
   # GET /posts/1 or /posts/1.json
   def show
     @post.update(views: @post.views + 1)
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.includes(:user, :rich_text_body).order(created_at: :desc)
 
     mark_notification_as_read if current_user
   end
