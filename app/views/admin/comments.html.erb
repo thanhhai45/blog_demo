@@ -3,4 +3,28 @@
     Administrator
   </h1>
   <%= render 'admin/nav_links' %>
+  
+  <table class="table table-dark table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Comment content</th>
+        <th scope="col">Author</th>
+        <th scope="col">Post</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <th scope="row"><%= comment.id %></th>
+          <td><%= comment.body.to_plain_text.truncate(25) %></td>
+          <td><%= comment.user.name %></td>
+          <td><%= comment.post.title.truncate_words(20) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="container d-flex justify-content-center align-items-center">
+    <%== pagy_bootstrap_nav(@pagy, link_extra: 'data-turbolinks="false"') %>
+  </div>
 </div>

@@ -1,18 +1,21 @@
 class AdminController < ApplicationController
+  include Pagy::Backend
   def index
   end
 
   def posts
-    @posts ||= Post.all.includes(:user)
+    @pagy, @posts = pagy(Post.all.includes(:user).order(created_at: :desc))
   end
 
   def comments
+    @pagy, @comments = pagy(Comment.all.includes(:user, :rich_text_body).order(created_at: :desc))
   end
 
   def users
+    @users = User.all
   end
 
   def show_post
-    @post ||= Post.includes(:user, :rich_text_body, :comments).find(params[:id])
+    @post ||= Post.includes(:user, comments: [:user, :rich_text_body]).find(params[:id])
   end
 end

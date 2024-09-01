@@ -4,7 +4,7 @@
   </h1>
   <%= render 'admin/nav_links' %>
   
-  <table class="table table-dark table-striped">
+  <table class="table table-dark table-striped mt-3">
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -24,5 +24,7 @@
       <% end %>
     </tbody>
   </table>
-  
+  <div class="container d-flex justify-content-center align-items-center">
+    <%== pagy_bootstrap_nav(@pagy, link_extra: 'data-turbolinks="false"') %>
+  </div>
 </div>
