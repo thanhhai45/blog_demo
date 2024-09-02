@@ -9,10 +9,48 @@
   </div>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
   </div>
-
+  
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+  
+  <%= fields_for :address, resource.address do |address| %>
+    <%= address.hidden_field :id %>
+    <div class="container card">
+      <div class="field">
+        <%= address.label :street %><br />
+        <%= address.text_field :street, autofocus: true, autocomplete: "street" %>
+      </div>
+      <div class="field">
+        <%= address.label :city %><br />
+        <%= address.text_field :city, autofocus: true, autocomplete: "city" %>
+      </div>
+      <div class="field">
+        <%= address.label :state %><br />
+        <%= address.text_field :state, autofocus: true, autocomplete: "state" %>
+      </div>
+      <div class="field">
+        <%= address.label :zip %><br />
+        <%= address.text_field :zip, autofocus: true, autocomplete: "zip" %>
+      </div>
+      <div class="field">
+        <%= address.label :country %><br />
+        <%= address.text_field :country, autofocus: true, autocomplete: "country" %>
+      </div>
+    </div>
+  <% end %>
+  
+    
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  </div>
+  
+  
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

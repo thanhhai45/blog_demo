@@ -83,3 +83,5 @@ gem "bullet", "~> 7.2"
 gem "activerecord-import", "~> 1.8"
 
 gem "pagy", "~> 9.0"
+
+gem "wicked", "~> 2.0"

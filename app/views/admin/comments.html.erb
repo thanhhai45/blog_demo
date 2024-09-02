@@ -18,7 +18,7 @@
         <tr>
           <th scope="row"><%= comment.id %></th>
           <td><%= comment.body.to_plain_text.truncate(25) %></td>
-          <td><%= comment.user.name %></td>
+          <td><%= comment.user.full_name %></td>
           <td><%= comment.post.title.truncate_words(20) %></td>
         </tr>
       <% end %>
