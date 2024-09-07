@@ -3,84 +3,90 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field mb-3">
+    <%= f.label :email, class: 'form-label fw-bold' %><br />
+    <%= f.email_field :email, autofocus: true, class: 'form-control', autocomplete: "email" %>
+  </div>
+  <div class="field mb-3">
+    <%= f.label :avatar , class: 'form-label fw-bold' %><br />
+    <%= f.file_field :avatar, autofocus: true, class: 'form-control', autocomplete: "avatar" %>
   </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+  <div class="field mb-3">
+    <%= f.label :first_name , class: 'form-label fw-bold' %><br />
+    <%= f.text_field :first_name, autofocus: true, class: 'form-control', autocomplete: "first_name" %>
   </div>
   
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+  <div class="field mb-3">
+    <%= f.label :last_name , class: 'form-label fw-bold' %><br />
+    <%= f.text_field :last_name, autofocus: true, class: 'form-control', autocomplete: "last_name" %>
   </div>
   
   <%= fields_for :address, resource.address do |address| %>
     <%= address.hidden_field :id %>
     <div class="container card">
-      <div class="field">
-        <%= address.label :street %><br />
-        <%= address.text_field :street, autofocus: true, autocomplete: "street" %>
+      <div class="field mb-3">
+        <%= address.label :street , class: 'form-label fw-bold' %><br />
+        <%= address.text_field :street, autofocus: true, class: 'form-control', autocomplete: "street" %>
       </div>
-      <div class="field">
-        <%= address.label :city %><br />
-        <%= address.text_field :city, autofocus: true, autocomplete: "city" %>
+      <div class="field mb-3">
+        <%= address.label :city , class: 'form-label fw-bold' %><br />
+        <%= address.text_field :city, autofocus: true, class: 'form-control', autocomplete: "city" %>
       </div>
-      <div class="field">
-        <%= address.label :state %><br />
-        <%= address.text_field :state, autofocus: true, autocomplete: "state" %>
+      <div class="field mb-3">
+        <%= address.label :state , class: 'form-label fw-bold' %><br />
+        <%= address.text_field :state, autofocus: true, class: 'form-control', autocomplete: "state" %>
       </div>
-      <div class="field">
-        <%= address.label :zip %><br />
-        <%= address.text_field :zip, autofocus: true, autocomplete: "zip" %>
+      <div class="field mb-3">
+        <%= address.label :zip , class: 'form-label fw-bold' %><br />
+        <%= address.text_field :zip, autofocus: true, class: 'form-control', autocomplete: "zip" %>
       </div>
-      <div class="field">
-        <%= address.label :country %><br />
-        <%= address.text_field :country, autofocus: true, autocomplete: "country" %>
+      <div class="field mb-3">
+        <%= address.label :country , class: 'form-label fw-bold' %><br />
+        <%= address.text_field :country, autofocus: true, class: 'form-control', autocomplete: "country" %>
       </div>
     </div>
   <% end %>
-  
-    
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-  
   
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, class: 'form-control', autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field mb-3">
+    <%= f.label :password_confirmation , class: 'form-label fw-bold' %><br />
+    <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, class: 'form-control', autocomplete: "current-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: 'btn btn-primary fw-bold' %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3 class='mt-2'>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div class="mb-5">
+  <span>
+   Unhappy? 
+  </span>  
+  <div class="d-flex align-items-center">
+    <%= button_to "Cancel my account", registration_path(resource_name), class: 'btn btn-outline-danger', data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+    <div>
+      <%= link_to "Back", :back, class: 'btn btn-outline-dark text-dark ms-1' %>
+    </div>
+  </div>
+</div>
 
-<%= link_to "Back", :back %>

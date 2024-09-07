@@ -13,12 +13,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-body-tertiary">
     <header>
       <%= render 'layouts/navbar' %>
       <%= render 'layouts/alerts' %>
     </header>
-    <main class="container" data-controller="hello">
+    <main class="container">
       <%= yield %>
     </main>
   </body>
