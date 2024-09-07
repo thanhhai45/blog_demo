@@ -4,6 +4,7 @@
 class Post < ApplicationRecord
   extend FriendlyId
   belongs_to :user
+  belongs_to :category
   has_many :comments, dependent: :destroy
   has_many :notifications, through: :user
   has_rich_text :body
@@ -15,11 +16,11 @@ class Post < ApplicationRecord
   friendly_id :title, use: %i[slugged history finders]
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[content_body created_at id title updated_at user_id views]
+    %w[content_body created_at id title updated_at user_id views category_id]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    %w[comments notifications user]
+    %w[comments notifications user category]
   end
   
   def should_generate_new_friendly_id?

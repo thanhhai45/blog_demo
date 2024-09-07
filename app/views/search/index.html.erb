@@ -6,8 +6,9 @@
     <thead>
       <tr>
         <th><%= sort_link(@query, :title, 'Title', default_order: :asc) %></th>
+        <th><%= sort_link(@query, :category_name, 'Category Name') %></th>
         <th><%= sort_link(@query, :body, 'Blog Content') %></th>
-        <th><%= sort_link(@query, :user_name, 'Users') %></th>
+        <th><%= sort_link(@query, :user_full_name, 'Users') %></th>
       </tr>
     </thead>
     
@@ -15,8 +16,9 @@
       <% @posts.each do |post| %>
         <tr>
           <td><%= link_to post.title, post, class: 'text-white' %></td>
+          <td><%= link_to post.category.name, post.category, class: 'text-white' %></td>
           <td><%= truncate(post.body.to_plain_text, length: 25, omission: '...') %></td>
-          <td><%= link_to post.user.name, post.user, class: 'text-white' %></td>
+          <td><%= link_to post.user.full_name, post.user, class: 'text-white' %></td>
         </tr>
       <% end %>
     </tbody>

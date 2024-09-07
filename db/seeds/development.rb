@@ -28,12 +28,17 @@ Address.first_or_create!(street: '116 Bui Tu Toan',
                          zip: '123456',
                          user: phuc)
 
+category = Category.create!(name: 'Uncategory', display_in_nav: true)
+Category.create!(name: 'Cars', display_in_nav: false)
+technology = Category.create!(name: 'Technology', display_in_nav: true)
+Category.create!(name: 'Fashion', display_in_nav: true)
+
 elapsed = Benchmark.measure do
   posts = []
   100.times do |x|
     puts "Creating post #{x}"
-    post1 = Post.new(title: "Title post of hai #{x}", body: "Body #{x} Words go here idk", user: hai)
-    post2 = Post.new(title: "Title post of user #{x}", body: "Body #{x} Words go here itx", user: phuc)
+    post1 = Post.new(title: "Title post of hai #{x}", body: "Body #{x} Words go here idk", user: hai, category: category)
+    post2 = Post.new(title: "Title post of user #{x}", body: "Body #{x} Words go here itx", user: phuc, category: technology)
 
     posts.push(post1)
     posts.push(post2)

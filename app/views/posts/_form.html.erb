@@ -13,15 +13,21 @@
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.select :category_id, options_for_select(Category.all.order(name: :desc)
+        .collect { |cat| [cat.name, cat.id] }), {}, { class: 'form-select' } %>
   </div>
 
   <div>
     <%= form.label :body, style: "display: block" %>
-    <%= form.rich_text_area :body %>
+    <%= form.rich_text_area :body, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mt-3">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
